@@ -1,0 +1,2 @@
+cv2.putText(im, '%s'%imdb_classes[j], (bbox[0], bbox[1]),
+                            cv2.FONT_HERSHEY_SIMPLEX, 1.0, color, 2)
