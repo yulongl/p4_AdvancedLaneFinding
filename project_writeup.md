@@ -59,7 +59,7 @@ Function *camera_cal(img)* in [p4.py](https://github.com/yulongl/p4_AdvancedLane
 
 #### 2. Use of color transforms and gradients to create a thresholded binary image
 
-Function *thresholded_binary(img)* in [p4.py](https://github.com/yulongl/p4_AdvancedLaneFinding/blob/master/p4.py) from line 113 to 173 is used for camera calibration for each frame. I used a combination of sobel in x and y direction, combined with S channel thresholding of the HLS color space.  
+Function *thresholded_binary(img)* in [p4.py](https://github.com/yulongl/p4_AdvancedLaneFinding/blob/master/p4.py) from line 113 to 173 is used for camera calibration for each frame. I used a combination of sobel in x and y direction, combined with S channel thresholding of the HLS color space. In the example below, green pixels are from sobel edge detection and blue ones are from HLS S channel.    
 
 ![thresholded](https://github.com/yulongl/p4_AdvancedLaneFinding/blob/master/output_images/thresholded.png)  
 
