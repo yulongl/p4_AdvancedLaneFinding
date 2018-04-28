@@ -89,15 +89,15 @@ When no line is detected, sliding window will be used. When line is detected, sl
 ![polyfit](https://github.com/yulongl/p4_AdvancedLaneFinding/blob/master/output_images/polyfit.png)  
 
 
-#### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
+#### 5. Radius of curvature of the lane and the position of the vehicle with respect to center
 
-I did this in lines # through # in my code in `my_other_file.py`
+Function *curvature_dist(f_img_draw)* in [p4.py](https://github.com/yulongl/p4_AdvancedLaneFinding/blob/master/p4.py) from line 471 to 522 is used for calculating real world lane radius of curvature and the position of the vehicle to center. The results will be printed on each frame.   
 
-#### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
+#### 6. An example image of the result plotted back down onto the road  
 
-I implemented this step in lines # through # in my code in `yet_another_file.py` in the function `map_lane()`.  Here is an example of my result on a test image:
+Function *draw_path(f_undist, binary_warped)* in [p4.py](https://github.com/yulongl/p4_AdvancedLaneFinding/blob/master/p4.py) from line 448 to 471 is used for drawing green shaded area of the lane path on the frames.
 
-![alt text][image6]
+![result](https://github.com/yulongl/p4_AdvancedLaneFinding/blob/master/output_images/result.PNG)  
 
 ---
 
