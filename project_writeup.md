@@ -103,14 +103,24 @@ Function *draw_path(f_undist, binary_warped)* in [p4.py](https://github.com/yulo
 
 ### Pipeline (video)
 
-#### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
+#### 1. Final video output
 
-Here's a [link to my video result](./project_video.mp4)
+Please check out this link [p4.mp4](https://github.com/yulongl/p4_AdvancedLaneFinding/blob/master/p4.mp4).
 
 ---
 
 ### Discussion
 
-#### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
+#### 1. Brief discussion about problems / issues in this implementation of this project and potential solutions
 
-Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
+##### 1. Restrictions on road conditions and environments  
+The algorithm is highly affected by road conditions and environments. The binary image thresholds need to be tuned very carefully for a certain road condition and does not perform well under other environments. I was not able to find a generic set of parameters which performs well on all the provided videos.  
+**Potential solution**: deep learning may be helpful finding out the lane lines, but requires a lot of work for labeling.   
+
+##### 2. React slowly to sudden changes
+Because of the averaging mechanism, the system reacts slowly to some sudden changes, for example, in bumping road condition. 
+**Potential solution**: Increase the filter thresholds and introduce second order derivatives.
+
+##### 3. Processing speed is slow
+Average processing speed is around 8fps. This may be a little slow for real time application.
+**Potential solution**: optimize the algorithm. GPU may acclerate the process.
