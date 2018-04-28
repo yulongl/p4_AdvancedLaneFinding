@@ -72,18 +72,22 @@ Function *perspective_transform(f_combined_binary)* in [p4.py](https://github.co
 | 593, 452      | 400, 0        | 
 | 687, 452      | 880, 0      |
 | 1047, 693     | 880, 719      |
-| 256, 693      | 400, 719        |
+| 256, 693      | 400, 719        |  
+  
 
 I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
 
 ![pt](https://github.com/yulongl/p4_AdvancedLaneFinding/blob/master/output_images/pt.png) 
 
 
-#### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
+#### 4. Lane-line pixels identification and polynomial fit
 
-Then I did some other stuff and fit my lane lines with a 2nd order polynomial kinda like this:
+Function *pixels_polyfit(f_binary_warped)* in [p4.py](https://github.com/yulongl/p4_AdvancedLaneFinding/blob/master/p4.py) from line 172 to 445 is used for identifying pixels and fitting the pixels into a quadratic curve. Left line and right line are processed separately and their information is stored in l_line class and r_line class. Last 5 fits, last 5 fits mean, current fit, line detection flag and etc. are recorded.  
 
-![alt text][image5]
+When no line is detected, sliding window will be used. When line is detected, sliding windows will be skipped and a margin area around the quadratic line will be used as the searching area. After line detected, the system will check the current fit changing rate to avoid jumps. If it's below thresholds, a weighted mean of the last 5 fits will be calculated with a higher weight on current fit. Otherwise, a lower weight will be assigned to current fit. Besides left line fit will also be mixed with 10% of right line fit to make it more parallel, vice versa.  
+
+![polyfit](https://github.com/yulongl/p4_AdvancedLaneFinding/blob/master/output_images/polyfit.png)  
+
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
