@@ -57,11 +57,11 @@ Function *camera_cal(img)* in [p4.py](https://github.com/yulongl/p4_AdvancedLane
  
 ![CC](https://github.com/yulongl/p4_AdvancedLaneFinding/blob/master/output_images/Camera%20Calibration.png)  
 
-#### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
+#### 2. Use of color transforms and gradients to create a thresholded binary image
 
-I used a combination of color and gradient thresholds to generate a binary image (thresholding steps at lines # through # in `another_file.py`).  Here's an example of my output for this step.  (note: this is not actually from one of the test images)
+Function *thresholded_binary(img)* in [p4.py](https://github.com/yulongl/p4_AdvancedLaneFinding/blob/master/p4.py) from line 113 to 173 is used for camera calibration for each frame. I used a combination of sobel in x and y direction, combined with S channel thresholding of the HLS color space.  
 
-![alt text][image3]
+![thresholded](https://github.com/yulongl/p4_AdvancedLaneFinding/blob/master/output_images/thresholded.png)  
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
