@@ -59,39 +59,25 @@ Function *camera_cal(img)* in [p4.py](https://github.com/yulongl/p4_AdvancedLane
 
 #### 2. Use of color transforms and gradients to create a thresholded binary image
 
-Function *thresholded_binary(img)* in [p4.py](https://github.com/yulongl/p4_AdvancedLaneFinding/blob/master/p4.py) from line 113 to 173 is used for camera calibration for each frame. I used a combination of sobel in x and y direction, combined with S channel thresholding of the HLS color space. In the example below, green pixels are from sobel edge detection and blue ones are from HLS S channel.    
+Function *thresholded_binary(img)* in [p4.py](https://github.com/yulongl/p4_AdvancedLaneFinding/blob/master/p4.py) from line 113 to 164 is used for generating thresholded binary image for each frame. I used a combination of sobel in x and y direction, combined with S channel thresholding of the HLS color space. In the example below, green pixels are from sobel edge detection and blue ones are from HLS S channel.    
 
 ![thresholded](https://github.com/yulongl/p4_AdvancedLaneFinding/blob/master/output_images/thresholded.png)  
 
-#### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
+#### 3. Perspective transform
 
-The code for my perspective transform includes a function called `warper()`, which appears in lines 1 through 8 in the file `example.py` (output_images/examples/example.py) (or, for example, in the 3rd code cell of the IPython notebook).  The `warper()` function takes as inputs an image (`img`), as well as source (`src`) and destination (`dst`) points.  I chose the hardcode the source and destination points in the following manner:
-
-```python
-src = np.float32(
-    [[(img_size[0] / 2) - 55, img_size[1] / 2 + 100],
-    [((img_size[0] / 6) - 10), img_size[1]],
-    [(img_size[0] * 5 / 6) + 60, img_size[1]],
-    [(img_size[0] / 2 + 55), img_size[1] / 2 + 100]])
-dst = np.float32(
-    [[(img_size[0] / 4), 0],
-    [(img_size[0] / 4), img_size[1]],
-    [(img_size[0] * 3 / 4), img_size[1]],
-    [(img_size[0] * 3 / 4), 0]])
-```
-
-This resulted in the following source and destination points:
+Function *perspective_transform(f_combined_binary)* in [p4.py](https://github.com/yulongl/p4_AdvancedLaneFinding/blob/master/p4.py) from line 164 to 172 is used for perspective transform for each frame. Perspective transform M is precalculated at beginning and stored in the stored_data class. src and dst are chosen as below:  
 
 | Source        | Destination   | 
 |:-------------:|:-------------:| 
-| 585, 460      | 320, 0        | 
-| 203, 720      | 320, 720      |
-| 1127, 720     | 960, 720      |
-| 695, 460      | 960, 0        |
+| 593, 452      | 400, 0        | 
+| 687, 452      | 880, 0      |
+| 1047, 693     | 880, 719      |
+| 256, 693      | 400, 719        |
 
 I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
 
-![alt text][image4]
+![pt](https://github.com/yulongl/p4_AdvancedLaneFinding/blob/master/output_images/pt.png) 
+
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
