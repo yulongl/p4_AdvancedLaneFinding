@@ -17,36 +17,45 @@
 
 ---  
 
-## [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points
+## Rubric Points
 
-### Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
+I will consider the [rubric points](https://review.udacity.com/#!/rubrics/571/view) individually and describe how I addressed each point in my implementation.  
 
 ---
 
 ### Writeup / README
 
-#### 1. Provide a Writeup / README that includes all the rubric points and how you addressed each one.  You can submit your writeup as markdown or pdf.  [Here](https://github.com/udacity/CarND-Advanced-Lane-Lines/blob/master/writeup_template.md) is a template writeup for this project you can use as a guide and a starting point.  
+#### 1. Provide a Writeup / README that includes all the rubric points and how you addressed each one  
 
-You're reading it!
+Please see this report.  
+
+---  
 
 ### Camera Calibration
 
-#### 1. Briefly state how you computed the camera matrix and distortion coefficients. Provide an example of a distortion corrected calibration image.
+#### 1. Camera matrix and distortion coefficients calculation
 
-The code for this step is contained in the first code cell of the IPython notebook located in "./examples/example.ipynb" (or in lines # through # of the file called `some_file.py`).  
+The code for this step is from line 55 to 99 in [p4.py](https://github.com/yulongl/p4_AdvancedLaneFinding/blob/master/p4.py).  
 
 I start by preparing "object points", which will be the (x, y, z) coordinates of the chessboard corners in the world. Here I am assuming the chessboard is fixed on the (x, y) plane at z=0, such that the object points are the same for each calibration image.  Thus, `objp` is just a replicated array of coordinates, and `objpoints` will be appended with a copy of it every time I successfully detect all chessboard corners in a test image.  `imgpoints` will be appended with the (x, y) pixel position of each of the corners in the image plane with each successful chessboard detection.  
 
 I then used the output `objpoints` and `imgpoints` to compute the camera calibration and distortion coefficients using the `cv2.calibrateCamera()` function.  I applied this distortion correction to the test image using the `cv2.undistort()` function and obtained this result: 
 
-![alt text][image1]
+Original:  
+![original](https://github.com/yulongl/p4_AdvancedLaneFinding/blob/master/output_images/calibration1.jpg)  
+
+Calibrated:  
+![Calibrated](https://github.com/yulongl/p4_AdvancedLaneFinding/blob/master/output_images/test_undist.jpg)  
+
+---  
 
 ### Pipeline (single images)
 
-#### 1. Provide an example of a distortion-corrected image.
+#### 1. An example of a distortion-corrected image  
 
-To demonstrate this step, I will describe how I apply the distortion correction to one of the test images like this one:
-![alt text][image2]
+Function *camera_cal(img)* in [p4.py](https://github.com/yulongl/p4_AdvancedLaneFinding/blob/master/p4.py) from line 104 to 112 is used for camera calibration for each frame.  
+ 
+![CC](https://github.com/yulongl/p4_AdvancedLaneFinding/blob/master/output_images/Camera%20Calibration.png)  
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
