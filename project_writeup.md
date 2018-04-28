@@ -118,9 +118,9 @@ The algorithm is highly affected by road conditions and environments. The binary
 **Potential solution**: deep learning may be helpful finding out the lane lines, but requires a lot of work for labeling.   
 
 ##### 2. React slowly to sudden changes
-Because of the averaging mechanism, the system reacts slowly to some sudden changes, for example, in bumping road condition. 
+Because of the averaging mechanism, the system reacts slowly to some sudden changes, for example, in bumping road condition.  
 **Potential solution**: Increase the filter thresholds and introduce second order derivatives.
 
 ##### 3. Processing speed is slow
-Average processing speed is around 8fps. This may be a little slow for real time application.
+Average processing speed is around 8fps. This may be a little slow for real time application.  
 **Potential solution**: optimize the algorithm. GPU may acclerate the process.
