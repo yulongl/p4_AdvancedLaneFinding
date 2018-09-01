@@ -4,6 +4,10 @@
 
 ---  
 
+## Demo  
+
+![demo](https://github.com/yulongl/p4_AdvancedLaneFinding/blob/master/output_images/demo.gif)  
+
 ## Goals  
 
 * Compute the camera calibration matrix and distortion coefficients given a set of chessboard images.
